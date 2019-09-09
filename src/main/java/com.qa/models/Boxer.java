@@ -16,9 +16,6 @@ public class Boxer {
     private String lastName;
     private int age;
     private String nationality;
-    public int wins;
-    public int losses;
-    public int draws;
 
     public Long getId() {
         return id;
@@ -60,28 +57,5 @@ public class Boxer {
         this.nationality = nationality;
     }
 
-    public int getWins() {
-        return wins;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    public int getLosses() {
-        return losses;
-    }
-
-    public void setLosses(int losses) {
-        this.losses = losses;
-    }
-
-    public int getDraws() {
-        return draws;
-    }
-
-    public void setDraws(int draws) {
-        this.draws = draws;
-    }
 
 }

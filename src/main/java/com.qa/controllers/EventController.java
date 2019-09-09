@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin()
-public class Eventontroller {
+public class EventController {
 
     @Autowired
     private EventRepository repository;

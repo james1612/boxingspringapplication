@@ -15,6 +15,17 @@ public class Event {
     private String boxer2Name;
     private String location;
     private String result;
+    private Long winnerId;
+
+
+    public Long getWinnerId() {
+        return winnerId;
+    }
+
+    public void setWinnerId(Long winnerId) {
+        this.winnerId = winnerId;
+    }
+
 
     public Long getId() {
         return id;
