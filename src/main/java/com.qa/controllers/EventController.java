@@ -15,22 +15,22 @@ public class EventController {
     private EventRepository repository;
 
     @RequestMapping(value = "events", method = RequestMethod.GET)
-    public List<Event> listAllNotes(){
+    public List<Event> listAllEvent(){
         return repository.findAll();
     }
 
     @RequestMapping(value = "events", method = RequestMethod.POST)
-    public Event addNote (@RequestBody Event note) {
-        return repository.saveAndFlush(note);
+    public Event addEvent (@RequestBody Event event) {
+        return repository.saveAndFlush(event);
     }
 
     @RequestMapping(value = "events/{id}", method = RequestMethod.GET)
-    public Event getNote(@PathVariable Long id){
+    public Event getEvent(@PathVariable Long id){
         return repository.findOne(id);
     }
 
     @RequestMapping(value = "events/{id}", method = RequestMethod.DELETE)
-    public Event deleteNote(@PathVariable Long id) {
+    public Event deleteEvent(@PathVariable Long id) {
         Event existing = repository.findOne(id);
         repository.delete(existing);
         return existing;

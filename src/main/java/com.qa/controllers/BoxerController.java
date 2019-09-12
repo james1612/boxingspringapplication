@@ -15,24 +15,32 @@ public class BoxerController {
     private BoxerRepository repository;
 
     @RequestMapping(value = "boxers", method = RequestMethod.GET)
-    public List<Boxer> listAllNotes(){
+    public List<Boxer> listAllBoxers(){
         return repository.findAll();
     }
 
     @RequestMapping(value = "boxers", method = RequestMethod.POST)
-    public Boxer addNote (@RequestBody Boxer note) {
-        return repository.saveAndFlush(note);
+    public Boxer addBoxer (@RequestBody Boxer boxer) {
+        return repository.saveAndFlush(boxer);
     }
 
     @RequestMapping(value = "boxers/{id}", method = RequestMethod.GET)
-    public Boxer getNote(@PathVariable Long id){
+    public Boxer getBoxer(@PathVariable Long id){
         return repository.findOne(id);
     }
 
     @RequestMapping(value = "boxers/{id}", method = RequestMethod.DELETE)
-    public Boxer deleteNote(@PathVariable Long id) {
+    public Boxer deleteBoxer(@PathVariable Long id) {
         Boxer existing = repository.findOne(id);
         repository.delete(existing);
         return existing;
     }
+
+    @RequestMapping(value = "boxers", method = RequestMethod.PUT)
+    public Boxer editBoxer(@RequestBody Boxer boxer) {
+        Boxer existing = repository.findOne(boxer.getId());
+        existing = boxer;
+        return repository.saveAndFlush(existing);
+    }
+
 }
