@@ -1,9 +1,6 @@
 package com.qa.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Event {
@@ -11,21 +8,12 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String boxer1Name;
-    private String boxer2Name;
+
+    @OneToMany
+    private String boxer1;
+    private String boxer2;
     private String location;
     private String result;
-    private Long winnerId;
-
-
-    public Long getWinnerId() {
-        return winnerId;
-    }
-
-    public void setWinnerId(Long winnerId) {
-        this.winnerId = winnerId;
-    }
-
 
     public Long getId() {
         return id;
@@ -35,20 +23,20 @@ public class Event {
         this.id = id;
     }
 
-    public String getBoxer1Name() {
-        return boxer1Name;
+    public String getBoxer1() {
+        return boxer1;
     }
 
-    public void setBoxer1Name(String boxer1Name) {
-        this.boxer1Name = boxer1Name;
+    public void setBoxer1(String boxer1) {
+        this.boxer1 = boxer1;
     }
 
-    public String getBoxer2Name() {
-        return boxer2Name;
+    public String getBoxer2() {
+        return boxer2;
     }
 
-    public void setBoxer2Name(String boxer2Name) {
-        this.boxer2Name = boxer2Name;
+    public void setBoxer2(String boxer2) {
+        this.boxer2 = boxer2;
     }
 
     public String getLocation() {
@@ -66,5 +54,11 @@ public class Event {
     public void setResult(String result) {
         this.result = result;
     }
+
+//    private Long winnerId;
+
+
+
+
 
 }
