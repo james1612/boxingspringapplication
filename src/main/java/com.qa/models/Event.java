@@ -8,8 +8,6 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @OneToMany
     private String boxer1;
     private String boxer2;
     private String location;
