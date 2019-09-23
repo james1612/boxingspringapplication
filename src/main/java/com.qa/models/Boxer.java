@@ -17,6 +17,19 @@ public class Boxer {
     private int age;
     private String nationality;
 
+
+    public Boxer(){
+        super();
+    }
+
+    public Boxer(Long id, String firstName, String lastName, int age, String nationality) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.nationality = nationality;
+    }
+
     public Long getId() {
         return id;
     }

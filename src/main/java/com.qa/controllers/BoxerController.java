@@ -36,11 +36,18 @@ public class BoxerController {
         return existing;
     }
 
-    @RequestMapping(value = "boxers", method = RequestMethod.PUT)
-    public Boxer editBoxer(@RequestBody Boxer boxer) {
-        Boxer existing = repository.findOne(boxer.getId());
-        existing = boxer;
-        return repository.saveAndFlush(existing);
-    }
+
+//    @RequestMapping(value = "boxers", method = RequestMethod.POST)
+//    public Boxer editBoxer (@RequestBody Boxer boxer) {
+//        return repository.saveAndFlush(boxer);
+//    }
+
+
+//    @RequestMapping(value = "boxers", method = RequestMethod.PUT)
+//    public Boxer editBoxer(@RequestBody Boxer boxer) {
+//        Boxer existing = repository.findOne(boxer.getId());
+//        existing = boxer;
+//        return repository.saveAndFlush(existing);
+//    }
 
 }
