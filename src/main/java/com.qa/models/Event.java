@@ -13,6 +13,20 @@ public class Event {
     private String location;
     private String result;
 
+    public Event(){
+        super();
+    }
+
+    public Event(Long id, String boxer1, String boxer2, String age, String result) {
+        this.id = id;
+        this.boxer1 = boxer1;
+        this.boxer2 = boxer2;
+        this.location = location;
+        this.result = result;
+    }
+
+
+
     public Long getId() {
         return id;
     }
