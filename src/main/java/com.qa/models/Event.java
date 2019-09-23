@@ -17,7 +17,7 @@ public class Event {
         super();
     }
 
-    public Event(Long id, String boxer1, String boxer2, String age, String result) {
+    public Event(Long id, String boxer1, String boxer2, String location, String result) {
         this.id = id;
         this.boxer1 = boxer1;
         this.boxer2 = boxer2;
