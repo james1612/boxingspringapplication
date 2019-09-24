@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -57,6 +58,19 @@ public class BoxerControllerTest {
         }
 
         @Test
+        public void testGetOneBoxer(){
+            Boxer boxer = new Boxer();
+            boxer.setId(100L);
+            boxer.setFirstName("Canelo");
+            boxer.setLastName("Alvarez");
+            boxer.setAge(29);
+            boxer.setNationality("Mexico");
+            when(repository.findOne(100L)).thenReturn(boxer);
+            assertEquals(boxerController.getBoxer(100L).getLastName(), "Alvarez" );
+        }
+
+
+        @Test
         public void addBoxerTest(){
             Boxer boxer = new Boxer();
             boxer.setId(100L);
@@ -69,6 +83,38 @@ public class BoxerControllerTest {
 
             assertEquals(boxerController.addBoxer(boxer).getAge(), 29);
         }
+
+        @Test
+        public void editBoxerTest() {
+            List<Boxer> boxerList = new ArrayList<>();
+
+            Boxer boxer = new Boxer();
+            boxer.setId(100L);
+            boxer.setFirstName("Canelo");
+            boxer.setLastName("Alvarez");
+            boxer.setAge(29);
+            boxer.setNationality("Mexico");
+            when(repository.saveAndFlush(boxer)).thenReturn(boxer);
+
+            boxer.setId(100L); // id stays the same
+            boxer.setFirstName("Saul"); // changed name
+            boxer.setLastName("Alvarez");
+            boxer.setAge(29);
+            boxer.setNationality("Mexico");
+            boxerList.add(boxer);
+            when(repository.saveAndFlush(boxer)).thenReturn(boxer);
+
+            // name has changed...
+            assertEquals("Saul", boxerController.addBoxer(boxer).getFirstName());
+            assertNotEquals("Canelo", boxerController.addBoxer(boxer).getFirstName());
+
+            // ... but id remains the same
+            assertEquals(Long.valueOf(100L), boxerController.addBoxer(boxer).getId());
+        }
+
+
+
+
 
         @Test
         public void deleteBoxerTest(){

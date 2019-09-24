@@ -57,6 +57,18 @@ public class EventControllerTest {
     }
 
     @Test
+    public void testGetOneEvent(){
+        Event event = new Event();
+        event.setId(100L);
+        event.setBoxer1("Anthony Fowler");
+        event.setBoxer2("Scott Fitzgerald");
+        event.setLocation("Liverpool");
+        event.setResult("SD12");
+        when(repository.findOne(100L)).thenReturn(event);
+        assertEquals(eventController.getEvent(100L).getBoxer2(), "Scott Fitzgerald" );
+    }
+
+    @Test
     public void addEventTest(){
         Event event = new Event();
         event.setId(420L);
@@ -68,6 +80,8 @@ public class EventControllerTest {
         when(repository.saveAndFlush(event)).thenReturn(event);
         assertEquals(eventController.addEvent(event).getResult(), "KO1");
     }
+
+
 
     @Test
     public void deleteEventTest(){

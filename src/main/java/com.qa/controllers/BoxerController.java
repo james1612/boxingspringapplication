@@ -5,6 +5,7 @@ import com.qa.repository.BoxerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -35,6 +36,14 @@ public class BoxerController {
         repository.delete(existing);
         return existing;
     }
+
+//    @Transactional
+//    @RequestMapping(value = "Games/{gameid}", method = RequestMethod.PUT)
+//    public Games updateGame(@RequestBody Games game, @PathVariable Long gameid){
+//        Games existing = repository.findOne(gameid);
+//        existing.setGame(game);
+//        return existing;
+//    }
 
 
 //    @RequestMapping(value = "boxers", method = RequestMethod.POST)
