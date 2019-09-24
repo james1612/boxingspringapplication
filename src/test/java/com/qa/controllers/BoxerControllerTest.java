@@ -86,7 +86,6 @@ public class BoxerControllerTest {
 
         @Test
         public void editBoxerTest() {
-            List<Boxer> boxerList = new ArrayList<>();
 
             Boxer boxer = new Boxer();
             boxer.setId(100L);
@@ -101,7 +100,6 @@ public class BoxerControllerTest {
             boxer.setLastName("Alvarez");
             boxer.setAge(29);
             boxer.setNationality("Mexico");
-            boxerList.add(boxer);
             when(repository.saveAndFlush(boxer)).thenReturn(boxer);
 
             // name has changed...

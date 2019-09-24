@@ -1,5 +1,6 @@
 package com.qa.controllers;
 
+import com.qa.models.Boxer;
 import com.qa.models.Event;
 import com.qa.repository.EventRepository;
 import org.junit.Test;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -26,7 +28,7 @@ public class EventControllerTest {
     private EventRepository repository;
 
     @Test
-    public void testGetAllBoxers(){
+    public void testGetAllEvents(){
         List<Event> eventList = new ArrayList<>();
 
         Event event = new Event();
@@ -81,6 +83,31 @@ public class EventControllerTest {
         assertEquals(eventController.addEvent(event).getResult(), "KO1");
     }
 
+    @Test
+    public void editEventTest() {
+
+        Event event = new Event();
+        event.setId(100L);
+        event.setBoxer1("James");
+        event.setBoxer2("Henry");
+        event.setLocation("o2 arena");
+        event.setResult("MD12");
+        when(repository.saveAndFlush(event)).thenReturn(event);
+
+        event.setId(100L);
+        event.setBoxer1("James");
+        event.setBoxer2("Henry");
+        event.setLocation("saudi arabia"); // changing location
+        event.setResult("MD12");
+        when(repository.saveAndFlush(event)).thenReturn(event);
+
+        // location has changed...
+        assertEquals("saudi arabia", eventController.addEvent(event).getLocation());
+        assertNotEquals("o2 arena", eventController.addEvent(event).getLocation());
+
+        // ... but id remains the same
+        assertEquals(Long.valueOf(100L), eventController.addEvent(event).getId());
+    }
 
 
     @Test
