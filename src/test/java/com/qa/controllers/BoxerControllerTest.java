@@ -117,16 +117,7 @@ public class BoxerControllerTest {
         @Test
         public void deleteBoxerTest(){
             Boxer boxer = new Boxer(1L, "Canelo", "Alvarez", 29, "Mexico");
-
-
             when(repository.findOne(100L)).thenReturn(boxer);
-
             assertEquals(boxerController.deleteBoxer(100L).getNationality(), "Mexico");
         }
-
-
-
-
-
-
 }

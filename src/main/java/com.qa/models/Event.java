@@ -67,7 +67,6 @@ public class Event {
         this.result = result;
     }
 
-//    private Long winnerId;
 
 
 

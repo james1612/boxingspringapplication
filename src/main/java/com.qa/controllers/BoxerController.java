@@ -37,26 +37,5 @@ public class BoxerController {
         return existing;
     }
 
-//    @Transactional
-//    @RequestMapping(value = "Games/{gameid}", method = RequestMethod.PUT)
-//    public Games updateGame(@RequestBody Games game, @PathVariable Long gameid){
-//        Games existing = repository.findOne(gameid);
-//        existing.setGame(game);
-//        return existing;
-//    }
-
-
-//    @RequestMapping(value = "boxers", method = RequestMethod.POST)
-//    public Boxer editBoxer (@RequestBody Boxer boxer) {
-//        return repository.saveAndFlush(boxer);
-//    }
-
-
-//    @RequestMapping(value = "boxers", method = RequestMethod.PUT)
-//    public Boxer editBoxer(@RequestBody Boxer boxer) {
-//        Boxer existing = repository.findOne(boxer.getId());
-//        existing = boxer;
-//        return repository.saveAndFlush(existing);
-//    }
 
 }
